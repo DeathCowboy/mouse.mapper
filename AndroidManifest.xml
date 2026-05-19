@@ -1,8 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
-    android:accessibilityEventTypes="typeAllMask"
-    android:accessibilityFeedbackType="feedbackGeneric"
-    android:notificationTimeout="100"
-    android:canRetrieveWindowContent="false"
-    android:canPerformGestures="true"
-    android:accessibilityFlags="flagDefault|flagRequestFilterKeyEvents" />
+<service
+    android:name=".MouseMappingService"
+    android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+    android:exported="true">
+    <intent-filter>
+        <action android:name="android.accessibilityservice.AccessibilityService" />
+    </intent-filter>
+
+    <!-- This points to the configuration file created in the next step -->
+    <meta-data
+        android:name="android.accessibilityservice"
+        android:resource="@xml/mouse_mapper_config" />
+</service>
